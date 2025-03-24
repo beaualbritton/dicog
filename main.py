@@ -1,6 +1,5 @@
 """
 Beau Albritton
-CS2300
 
 main.py for Spotify Album Search webapp
 
@@ -27,8 +26,11 @@ import datetime
 app = Flask(__name__)
 
 #Using my credentials for this from Spotify for Developers
-client_id = "39cff5a6b7ab4f8792bc33395223c247"
-client_secret = "2960b91248e543d097d07f5ed8b3eb5c"
+credential_file = open("credentials.txt","r")
+
+client_id = credential_file.readline().rstrip()
+client_secret = credential_file.readline().rstrip()
+
 #Setting the variable "spotify" to an object that contains a valid spotipy instance. This interfaces with the Spotify API directly
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
 
